@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text"/>
+<input type="button" value="点击获取短信验证码" id="btn"/>
+
+<script>
+    //思路：
+    //1. 找对象
+    var btn = document.getElementById("btn");
+    //2. 给按钮注册点击事件
+    btn.onclick = function () {
+        var num = 60;
+        //3. 把按钮给禁用了，每秒钟都要改变内容
+        this.disabled = true;
+        var timer = setInterval(function () {
+            //3.1 每秒钟都要改变内容
+            num--;
+            btn.value = num+"秒后可以再次发送";
+
+            //4. 时间到了要让按钮能够继续点，内容恢复为默认值
+            if(num == 0) {
+                clearInterval(timer);
+                btn.disabled = false;
+                btn.value = "点击获取短信验证码";
+            }
+        }, 1000);
+
+
+    };
+
+
+
+
+
+</script>
+</body>
+</html>
